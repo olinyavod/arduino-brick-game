@@ -1,0 +1,52 @@
+#ifndef _GAME_MENU_STATE_INCLUDED
+#define _GAME_MENU_STATE_INCLUDED
+
+#include <GameStateBase.h>
+
+const uint16_t _chartA[] PROGMEM = {
+    0xFFF, 0x387, 0x37B, 0x37B, 0x37B, 0x303, 0x37B, 0x37B, 0x37B, 0xFFF
+};
+
+const uint16_t _chartB[] PROGMEM = {
+    0xFFF, 0x383, 0x37B, 0x37B, 0x383, 0x37B, 0x37B, 0x37B, 0x383, 0xFFF
+};
+
+const uint16_t _chartC[] PROGMEM = {
+    0xFFF, 0x387, 0x37B, 0x3FB, 0x3FB, 0x3FB, 0x3FB, 0x37B, 0x387, 0xFFF
+};
+
+const uint16_t _chartD[] PROGMEM = {
+    0xFFF, 0x383, 0x37B, 0x37B, 0x37B, 0x37B, 0x37B, 0x37B, 0x383, 0xFFF
+};
+
+const uint16_t _chartE[] PROGMEM = {
+    0xFFF, 0x303, 0x3FB, 0x3FB, 0x383, 0x3FB, 0x3FB, 0x3FB, 0x303, 0xFFF
+};
+
+const uint16_t _chartF[] PROGMEM = {
+    0xFFF, 0x303, 0x3FB, 0x3FB, 0x383, 0x3FB, 0x3FB, 0x3FB, 0x3FB, 0xFFF
+};
+
+const uint16_t *const _chartTable[] PROGMEM = {
+    _chartA, _chartB, _chartC, _chartD, _chartE, _chartF
+};
+
+class GameMenuState : public GameStateBase
+{
+private:
+    uint8_t _selectTypeGame;
+public:
+
+    GameMenuState(BrickGameBase* game)
+        :GameStateBase(game){
+        _selectTypeGame = 4;
+    }
+    
+    ~GameMenuState() override {
+
+    }
+
+    void loop(uint8_t delta) override;
+};
+
+#endif
