@@ -192,3 +192,22 @@ void BrickGame::setRow(uint8_t y, uint16_t row){
 
     _gameDisplay[y] = row;
 }
+
+void BrickGame::changeState(GameTrigger trigger){
+    if(_currentState != NULL)
+        delete _currentState;
+
+    switch (trigger)
+    {
+    case GameTrigger::GameOver:
+        _currentState = new GameOverState(this);
+        break;
+    
+    default:
+        _currentState = new GameMenuState(this);
+        break;
+    }
+
+    if(_currentState != NULL)
+        _currentState->init();
+}

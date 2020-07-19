@@ -5,6 +5,7 @@
 #include <GameStateBase.h>
 #include <BrickGameBase.h>
 #include <GameMenuState.h>
+#include <GameOverState.h>
 
 constexpr uint8_t BRICK_SIZE = 7;
 constexpr uint8_t BRICK_INTO_SIZE = (BRICK_SIZE - 4);
@@ -74,6 +75,7 @@ public:
     bool getPixel(uint8_t x, uint8_t y) override;
     uint16_t getRow(uint8_t y) override;
     void setRow(uint8_t y, uint16_t row) override;
+    void changeState(GameTrigger trigger) override;
 };
 
 #endif

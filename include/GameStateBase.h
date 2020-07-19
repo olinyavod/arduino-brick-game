@@ -20,6 +20,7 @@ public:
     }
 
     virtual void loop(uint8_t delta) { }
+    virtual void init() { }
 };
 
 #endif

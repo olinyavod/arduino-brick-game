@@ -31,15 +31,33 @@ const uint16_t *const _chartTable[] PROGMEM = {
     _chartA, _chartB, _chartC, _chartD, _chartE, _chartF
 };
 
+const uint8_t _gamesTable[] PROGMEM = {
+    GameTrigger::GameOver, 
+    GameTrigger::GameOver,
+    GameTrigger::GameOver, 
+    GameTrigger::GameOver, 
+    GameTrigger::GameOver, 
+    GameTrigger::GameOver
+};
+
+constexpr uint16_t MIN_SPEED = 1000;
+constexpr uint16_t MAX_SPEED = 200;
+constexpr uint8_t ACSELERATION = 50;
+constexpr uint8_t MAX_GAME_COUNT = 6;
+
 class GameMenuState : public GameStateBase
 {
 private:
-    uint8_t _selectTypeGame;
+    int8_t _selectTypeGame;
+    uint16_t _speed, _acseleration;
+    ButtonState _oldButtonState;
 public:
 
     GameMenuState(BrickGameBase* game)
         :GameStateBase(game){
-        _selectTypeGame = 4;
+        _selectTypeGame = 0;
+        _speed = MIN_SPEED;
+        _acseleration = 0;
     }
     
     ~GameMenuState() override {
@@ -47,6 +65,7 @@ public:
     }
 
     void loop(uint8_t delta) override;
+    void init() override;
 };
 
 #endif
