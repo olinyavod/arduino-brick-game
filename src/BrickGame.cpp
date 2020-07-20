@@ -202,6 +202,10 @@ void BrickGame::changeState(GameTrigger trigger){
     case GameTrigger::GameOver:
         _currentState = new GameOverState(this);
         break;
+        
+    case GameTrigger::Snake:
+        _currentState = new SnakeGame(this);
+        break;    
     
     default:
         _currentState = new GameMenuState(this);

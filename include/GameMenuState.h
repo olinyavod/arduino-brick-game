@@ -32,7 +32,7 @@ const uint16_t *const _chartTable[] PROGMEM = {
 };
 
 const uint8_t _gamesTable[] PROGMEM = {
-    GameTrigger::GameOver, 
+    GameTrigger::Snake, 
     GameTrigger::GameOver,
     GameTrigger::GameOver, 
     GameTrigger::GameOver, 

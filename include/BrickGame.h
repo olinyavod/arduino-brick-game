@@ -6,6 +6,7 @@
 #include <BrickGameBase.h>
 #include <GameMenuState.h>
 #include <GameOverState.h>
+#include <SnakeGame.h>
 
 constexpr uint8_t BRICK_SIZE = 7;
 constexpr uint8_t BRICK_INTO_SIZE = (BRICK_SIZE - 4);
