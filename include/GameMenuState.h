@@ -61,7 +61,7 @@ public:
     }
     
     ~GameMenuState() override {
-
+        
     }
 
     void loop(uint8_t delta) override;

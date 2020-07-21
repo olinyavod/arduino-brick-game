@@ -26,13 +26,14 @@ auto _backColor = ST7735_WHITE;
 uint8_t _analog_ref = DEFAULT;
 
 auto _game = BrickGame(&display, SCREEN_WIDTH, SCREEN_HEIGHT, _foreColor, _backColor);
+volatile int _button;
 
 uint32_t _seconds = 0;
 
 ISR(ADC_vect){
-  int result = (ADCL>> 6) | (ADCH << 2);
+  _button = (ADCL>> 6) | (ADCH << 2);
 
-  switch (result)
+  switch (_button)
   {
   case BUTTON_UP:
     _game.setButtonState(ButtonState::UP);
@@ -65,6 +66,7 @@ void setup() {
   // put your setup code here, to run once:
   //_seconds = 0;
   //pinMode(BUTTONS_PIN, INPUT);
+  Serial.begin(9600);
 
   display.initR(INITR_18BLACKTAB);
   display.setRotation(2);
@@ -104,5 +106,7 @@ void loop() {
   
   _game.loop(delta);
   // put your main code here, to run repeatedly:  
-  _time = milliseconds;  
+  _time = milliseconds; 
+  Serial.println(_button);
+  
 }
